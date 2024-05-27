@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kakatiya University Online Portal</title>
+    <!-- Include necessary CSS files -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <!-- Header Section -->
+        <div class="header">
+            <img id="ku-logo" src="./imgs/ku-logo.png" />
+            <div id="ku-text" style="font-family: Old English Text MT;">Kakatiya University</div>
+            <div id="online-portal">ONLINE PORTAL</div>
+        </div>
+        <!-- Menu Section -->
+        <div class="menu-container">
+            <div class="menu">
+                <span id="home-width"><i class="fas fa-home home-logo"></i></span>
+                <a href="index.html">Home</a>
+                <a href="./add-details.html">Academics</a>
+                <a href="./track.html">Track</a>
+                <a href="">History</a>
+                <a href="">Support</a>
+                <!-- <a href="./login.html" id="login-link">Login</a> -->
+            </div>
+        </div>
+        <!-- Body Section -->
+        <div class="body-section">
+            <div class="academics-container">
+                <div class="add-academics-header">
+                    <h3>Add Academics</h3>
+                </div>
+                <!-- Form for adding academics -->
+                <form action="connect.php" method="post">
+                    <div class="academics-body">
+                        <!-- Course Type Select -->
+                        <div class="row">
+                            <div class="col-md-6 p-2 option-box">
+                                <div class="d-flex">
+                                    <button class="btn btn-secondary btn-course">Course Type</button>
+                                    <select class="form-select form-width" aria-label="Default select example" id="select1" name="select1" onchange="selectCourse(this.id,'select2')">
+                                        <option selected>Select Course Type</option>
+                                        <option value="Under Graduation">Under Graduation</option>
+                                        <option value="Post Graduation">Post Graduation</option>
+                                        <option value="Professional">Professional</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Course Select -->
+                            <div class="col-md-6 p-2 option-box">
+                                <div class="d-flex">
+                                    <button class="btn btn-secondary btn-course">Course</button>
+                                    <select class="form-select form-width" aria-label="Default select example" id="select2" name="select2" required>
+                                        <option selected>Select Course</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hall Ticket Number Input -->
+                        <div class="row hallticket-section">
+                            <div class="d-flex">
+                                <button class="btn btn-secondary btn-course">Hall Ticket Number</button>
+                                <div class="input-group rounded">
+                                    <input type="search" class="form-control rounded" placeholder="Enter Hall Ticket Number" aria-label="Search" aria-describedby="search-addon" name="hallticket" required>
+                                    <span class="input-group-text border-0" id="search-addon">
+                                    <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Name Input -->
+                        <div class="row">
+                            <div class="col-md-6 p-2 option-box">
+                                <div class="d-flex">
+                                    <button class="btn btn-secondary btn-course ">Name</button>
+                                    <input class="namebox-academics" type="text" name="name" required placeholder="Enter Name"style="width: 60%;" >
+                                </div>
+                            </div>
+                            <!-- Month & Year of Pass Select -->
+                            <div class="col-md-6 p-2 option-box">
+                                <div class="d-flex">
+                                    <button class="btn btn-secondary btn-course">Month & Year of Pass</button>
+                                    <select class="form-select month-section" aria-label="Default select example" name="month">
+                                        <option selected>Month</option>
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
+                                    </select>
+                                    <input type="number" name="year" placeholder="Year" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 p-2 option-box">
+                                <div class="d-flex">
+                                    <button class="btn btn-secondary btn-course">Phone Number</button>
+                                    <input type="number" name="Phone" id="" placeholder="Enter Phone Number" required style="width: 60%;">
+                                </div>
+                            </div>
+                            <!-- Course Select -->
+                            <div class="col-md-6 p-2 option-box">
+                                <div class="d-flex">
+                                    <button class="btn btn-secondary btn-course">Address</button>
+                                    <input type="text" name="Address" id="" placeholder="Enter Address" required style="width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="row details-submit-section">
+                            <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Footer Section -->
+            <div class="footer">
+                Copyright © 2023-24 Kakatiya University - Product by KUCET.
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Section -->
+    <script>
+        // Function to dynamically populate course options based on course type selection
+        function selectCourse(s1, s2) {
+            var s1 = document.getElementById(s1);
+            var s2 = document.getElementById(s2);
+
+            s2.innerHTML = "";
+
+            if (s1.value == "Under Graduation") {
+                var optionArray = [
+                    'b.Li.Sc|B.Li.Sc',
+                    'bBA|BBA',
+                    'bHM & CT|BHM & CT',
+                    'history|History',
+                    'b.Sc(B)|B.Sc(B)',
+                    'b.Sc(M)|B.Sc(M)',
+                    'b.Sc(V)|B.Sc(V)',
+                    'b.Com|B.Com',
+                    'b.A|B.A',
+                    'b.B.M|B.B.M',
+                    'bCA|BCA',
+                    'b.Sc(V)]|B.Sc(V)'
+                ];
+            } else if (s1.value == "Post Graduation") {
+                var optionArray = [
+                    'pGDCA|PGDCA',
+                    'pGDG&C|PGDG&C',
+                    'm.A|M.A',
+                    'story|Story',
+                    'm.COM|M.COM',
+                    'm.Sc|M.Sc',
+                    'mASTER OF SOCIAL WORK|MASTER OF SOCIAL WORK',
+                    'mASTER OF TOURISM|MASTER OF TOURISM',
+                    'm.H.R.M.|M.H.R.M.',
+                    'm.Li.Sc|M.Li.Sc',
+                    'm.C.J.|M.C.J.',
+                    'm.P.Ed|M.P.Ed'
+                ];
+
+            } else if (s1.value == "Professional") {
+                var optionArray = [
+                    'b.Ed|B.Ed',
+                    'b.TECH|B.TECH',
+                    'b.Pharmacy|B.Pharmacy',
+                    'lAW|LAW',
+                    'mBA|MBA',
+                    'mCA|MCA',
+                    'm.Pharmacy|M.Pharmacy',
+                    'm.TECH|M.TECH',
+                    'm.ED|M.ED',
+                    'b.P.ED|B.P.ED',
+                    'pHARM-D|PHARM-D',
+                    'm.Sc 5-YEAR INTEGRATED CHEMISTRY|M.Sc 5-YEAR INTEGRATED CHEMISTRY',
+                    'm.Sc 5-YEAR INTEGRATED BIOTECHNOLOGY|M.Sc 5-YEAR INTEGRATED BIOTECHNOLOGY'
+                ];
+
+            }
+            for (var option in optionArray) {
+                var pair = optionArray[option].split("|");
+                var newOption = document.createElement("option");
+                newOption.value = pair[0];
+                newOption.innerHTML = pair[1];
+                s2.options.add(newOption);
+            }
+
+        }
+    </script>
+</body>
+</html>

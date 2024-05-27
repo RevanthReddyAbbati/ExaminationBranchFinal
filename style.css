@@ -1,0 +1,214 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    margin-top: 0px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-background {
+    background-image: url(./imgs/title-background.jpg);
+    background-size: 70% auto;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-blend-mode: soft-light;
+}
+
+#ku-logo {
+    height: 90px;
+    width: 85px;
+}
+
+#ku-text {
+    color: #434242;
+    display: inline-block;
+    font-family: "Old English Text MT";
+    font-size: 40px;
+    padding-top: 0;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-right: 220px;
+}
+
+#online-portal {
+    color: #EF7716;
+    display: inline-block;
+    font-family: Helvetica, "Trebuchet MS", Arial, sans-serif;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.home-logo {
+    color: #898787;
+    font-size: 25px;
+    background-color: #FECB2D;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-top: 12px;
+    padding-left: 16px;
+    height: 50px;
+    width: 70px;
+}
+
+.menu {
+    display: flex;
+    background-color: #2D607E;
+    color: white;
+    align-items: center;
+    min-width: 70%;
+    max-width: 80%;
+    align-self: center;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px black solid;
+    border-radius: 15px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    font-family: Helvetica, "Trebuchet MS", Arial, sans-serif;;
+}
+
+.menu a:hover {
+    color: #FECB2D;
+}
+
+.menu img {
+    padding: 10px 30px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0 100%, 0% 50%);
+}
+
+#login-link {
+    font-weight: normal;
+    position: relative;
+    margin-left: 50px;
+}
+
+#welcome {
+    font-size: 28px;
+    margin-top: 2%;
+    margin-left: 90px;
+    font-family: Helvetica, "Trebuchet MS", Arial, sans-serif;
+    font-weight: 470;
+}
+
+.body-section {
+    margin-top: 4%;
+    background-color: #f1f1f1;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.add-course span {
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+.add-course {
+    margin: auto;
+    background-color: #ffffff;
+    margin-top: 3.5%;
+    padding-left: 20px;
+    width: 90%;
+    padding: 20px;
+}
+
+.footer {
+    height: 30px;
+    background-color: #2D607E;
+    width: 100%;
+    color: white;
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.acadamics-container {
+    margin-top: 20px !important;
+    margin: auto;
+    width: 88%;
+    background-color: #ffffff;
+}
+
+.add-academics-header {
+    background-color: #f7f7f7;
+    padding-bottom: 20px;
+    padding-left: 15px;
+}
+
+.academics-body {
+    background-color: #ffffff;
+    padding: 10px 20px;
+}
+
+.btn-course {
+    width: 35%;
+    color: #585f67 !important;
+    border-radius: 0% !important;
+    background-color: #e8ecef !important;
+    border: 2px #e1e5e9 !important;
+}
+
+.hallticket-section {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.namebox-acadamics {
+    width: 65% !important;
+}
+
+select {
+    border-radius: 0% !important;
+}
+.track-submit-section, .details-submit-section{
+    display: flex;
+    justify-content: center;
+}
+.submit-btn,
+.print-btn {
+    margin-top: 20px !important;
+    width: 200px !important;
+}
+.submit-btn{
+    margin-right: 20px;
+}
+
+.print-submit-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.month-section {
+    width: 25% !important;
+}
+
+.tracking-link {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+}
+
+.tracking-link a {
+    color: orchid;
+}
+
+.tracking-link a:hover {
+    color: forestgreen;
+}

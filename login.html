@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>KU Online Login Form</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/alphardex/aqua.css@master/dist/aqua.min.css'>
+  <link rel="stylesheet" href="./login.css">
+
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header">
+                <img id="ku-logo" src="./imgs/ku-logo.png" />
+                <div id="ku-text">Kakatiya University</div>
+                <div id="online-portal">ONLINE PORTAL</div>
+            </div>
+        </div>
+    </header>
+<!-- partial:index.partial.html -->
+<div class="form-body">
+    <form class="login-form" action="javascript:void(0);">
+      <h1>Login</h1>
+      <div class="form-input-material">
+        <input type="text" name="username" id="username" placeholder=" " autocomplete="off" class="form-control-material" required />
+        <label for="username">Username</label>
+      </div>
+      <div class="form-input-material">
+        <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control-material" required />
+        <label for="password">Password</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-ghost">Login</button>
+      <div class="forgot">
+        <a href="">Forgot Password</a>
+      </div>
+    </form>
+</div>
+<!-- partial -->
+  
+</body>
+</html>

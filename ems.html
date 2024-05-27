@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kakatiya University Online Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <img id="ku-logo" src="./imgs/ku-logo.png" />
+            <div id="ku-text">Kakatiya University</div>
+            <div id="online-portal">ONLINE PORTAL</div>
+        </div>
+        <div class="menu-container">
+            <div class="menu">
+                <span id="home-width"><i class="fas fa-home home-logo"></i></span>
+                <a href="">Home</a>
+                <a href="">Applications</a>
+                <a href="./ems.html">EMS Update</a>
+                <a href="">History</a>
+                <a href="">Support</a>
+                <a href="" id="login-link" style="color:yellow;">Examination Branch</a>
+            </div>
+        </div>
+        <div class="body-section">
+            <form action="update.php" method="post">
+                <div class="academics-body">
+                    <div class="row">
+                        <div class="row hallticket-section">
+                            <div class="display-name" style="display:flex; justify-content:center;margin-bottom:20px;">
+                                <h5><label>NAME : </label><span id="studentName" name="name"></span></h5>
+                                <input type="hidden" name="name" id="studentNameHidden">
+                            </div>
+                            <div class= "d-flex">
+                                <button class="btn btn-secondary btn-course">Hall Ticket Number</button>
+                                <div class="input-group rounded">
+                                    <input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" name="hallticket" id="hallticket-input"/>
+                                    <span class="input-group-text border-0" id="search-addon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Suggestions list -->
+                            <div id="suggestions-container" class="mt-1" style="display: none;">
+                                <ul id="suggestions-list" class="list-group"></ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-2 option-box">
+                            <div class="d-flex">
+                                <button class="btn btn-secondary btn-course">Status</button>
+                                <select class="form-select status-select" aria-label="Default select example" name="status" id="status-select" required>
+                                    <option selected>--Select Status--</option>
+                                    <option value="1">Pending For Payment Verification</option>
+                                    <option value="2">TR Is Not Available</option>
+                                    <option value="3">Pending For Signature</option>
+                                    <option value="4">Certificate Ready</option>
+                                    <option value="5">Certificate Posted</option>
+                                    <option value="6">Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-2 option-box" id="certificate-number-section" style="display: none;">
+                            <div class="d-flex">
+                                <button class="btn btn-secondary btn-course">Certificate Number</button>
+                                <input type="text" class="form-control rounded" placeholder="" name="certificate_number" id="certificate-number-input"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-2 option-box" id="postal-number-section" style="display: none;">
+                            <div class="d-flex">
+                                <button class="btn btn-secondary btn-course">Post Tracking Number</button>
+                                <input type="text" class="form-control rounded" placeholder="" name="post_number" id="post-number-input"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-2 option-box" id="others-section" style="display: none;">
+                            <div class="d-flex">
+                                <button class="btn btn-secondary btn-course">Remarks</button>
+                                <input type="text" class="form-control rounded" placeholder="" name="others" id="others-input"/>
+                            </div>
+                        </div>
+                        <div class="row print-submit-section">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary submit-btn">Update Status</button>
+                                <button type="button" class="btn btn-primary print-btn" style="display: none;">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="footer">
+                Copyright © 2023-24 Kakatiya University - Product by KUCET.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById("hallticket-input");
+        const suggestionsContainer = document.getElementById("suggestions-container");
+        const suggestionsList = document.getElementById("suggestions-list");
+        const studentName = document.getElementById("studentName");
+        const studentNameHidden = document.getElementById("studentNameHidden");
+        const statusSelect = document.getElementById("status-select");
+        const certificateNumberSection = document.getElementById("certificate-number-section");
+        const postalNumberSection = document.getElementById("postal-number-section");
+        const othersSection = document.getElementById("others-section");
+        const printBtn = document.querySelector(".print-btn");
+
+        input.addEventListener("input", function() {
+            const hallticket = this.value.trim();
+            if (hallticket.length === 0) {
+                hideSuggestions();
+                return;
+            }
+
+            fetch(`search.php?hallticket=${hallticket}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        suggestionsList.innerHTML = "";
+                        data.forEach(item => {
+                            const li = document.createElement("li");
+                            li.textContent = item.hallticket;
+                            li.classList.add("list-group-item");
+                            li.addEventListener("click", function() {
+                                input.value = item.hallticket;
+                                studentName.textContent = item.name.toUpperCase(); // Displaying the name
+                                studentName.style.color = "red";
+                                studentNameHidden.value = item.name; // Update hidden input
+                                hideSuggestions();
+                            });
+                            suggestionsList.appendChild(li);
+                        });
+                        showSuggestions();
+                    } else {
+                        hideSuggestions();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    hideSuggestions();
+                });
+        });
+
+        function showSuggestions() {
+            suggestionsContainer.style.display = "block";
+        }
+
+        function hideSuggestions() {
+            suggestionsContainer.style.display = "none";
+        }
+
+        statusSelect.addEventListener("change", function() {
+            const selectedValue = this.value;
+            if (selectedValue === "4") {
+                certificateNumberSection.style.display = "block";
+                postalNumberSection.style.display = "none"; // Hide postal number section
+                othersSection.style.display = "none"; // Hide others section
+                printBtn.style.display = "block"; // Show print button
+            } else if (selectedValue === "5") {
+                postalNumberSection.style.display = "block";
+                certificateNumberSection.style.display = "none"; // Hide certificate number section
+                othersSection.style.display = "none"; // Hide others section
+                printBtn.style.display = "block"; // Show print button
+            } else if (selectedValue === "6") {
+                othersSection.style.display = "block";
+                certificateNumberSection.style.display = "none"; // Hide certificate number section
+                postalNumberSection.style.display = "none"; // Hide postal number section
+                printBtn.style.display = "none"; // Hide print button
+            } else {
+                certificateNumberSection.style.display = "none"; // Hide certificate number section
+                postalNumberSection.style.display = "none"; // Hide postal number section
+                othersSection.style.display = "none"; // Hide others section
+                printBtn.style.display = "none"; // Hide print button
+            }
+        });
+
+        printBtn.addEventListener("click", function() {
+            fetch("print.php")
+                .then(response => response.text())
+                .then(data => {
+                    const printWindow = window.open("", "_blank");
+                    printWindow.document.write(`<pre>${data}</pre>`);
+                    printWindow.document.close();
+                    printWindow.print();
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        });
+    </script>
+</body>
+</html>
